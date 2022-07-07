@@ -1,10 +1,12 @@
-import './App.css';
+import "./App.css";
+import CreatePost from "./Components/CreatePost";
 
 function App() {
+  const posts = [];
   return (
     <div className="App">
       <header className="App-header">
-       <h1>Hello World</h1>
+        <CreatePost />
       </header>
     </div>
   );
