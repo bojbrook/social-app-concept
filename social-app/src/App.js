@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 function App() {
   const [posts, setPost] = useState([]);
-  const [showCreatePost, setCreatePost] = useState(false);
+  const [showCreatePost, setCreatePost] = useState(true);
 
   const createPostButtonHandler = () => {
     setCreatePost(!showCreatePost);
@@ -16,7 +16,7 @@ function App() {
   };
 
   const postsArr = posts.map((item) => (
-    <Post key={item.timestamp} body={item.body} />
+    <Post key={item.timestamp} data={item} />
   ));
 
   return (
