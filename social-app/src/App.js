@@ -5,6 +5,11 @@ import { useState } from 'react';
 
 function App() {
   const [posts, setPost] = useState([]);
+  const [showCreatePost, setCreatePost] = useState(false);
+
+  const createPostButtonHandler = () => {
+    setCreatePost(!showCreatePost);
+  };
 
   const addPost = (post) => {
     setPost((arr) => [...arr, post]);
@@ -17,7 +22,8 @@ function App() {
   return (
     <div className="App">
       <h1>Posts</h1>
-      <CreatePost addPost={addPost} />
+      {showCreatePost && <CreatePost addPost={addPost} />}
+      <button onClick={createPostButtonHandler}>Create Post</button>
       {postsArr}
     </div>
   );
