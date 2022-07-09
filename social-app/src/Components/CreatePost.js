@@ -3,7 +3,12 @@ const CreatePost = (props) => {
     e.preventDefault();
     const message = e.target.postMessage.value;
     e.target.postMessage.value = '';
-    props.addPost(message);
+    const postData = {
+      body: message,
+      sender: 'bojbrook',
+      timestamp: Date.now(),
+    };
+    props.addPost(postData);
   };
   return (
     <>

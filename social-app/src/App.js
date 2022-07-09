@@ -11,7 +11,7 @@ function App() {
   };
 
   const postsArr = posts.map((item) => (
-    <Post key={Math.floor(Math.random() * 10)} body={item} />
+    <Post key={item.timestamp} body={item.body} />
   ));
 
   return (
