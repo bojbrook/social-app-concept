@@ -5,8 +5,10 @@ const CreatePost = (props) => {
     e.target.postMessage.value = '';
     const postData = {
       body: message,
-      sender: 'bojbrook',
+      creator: 'bojbrook',
       timestamp: Date.now(),
+      comments: [],
+      id: Date.now(),
     };
     props.addPost(postData);
   };
