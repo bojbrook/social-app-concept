@@ -7,9 +7,9 @@ const CreatePost = (props) => {
       body: message,
       creator: 'bojbrook',
       timestamp: Date.now(),
+      comments: [],
+      id: Date.now(),
     };
-
-    console.log(postData);
     props.addPost(postData);
   };
   return (
