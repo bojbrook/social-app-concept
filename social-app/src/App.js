@@ -5,7 +5,15 @@ import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 
 function App() {
-  const [posts, setPost] = useState([]);
+  const [posts, setPost] = useState([
+    {
+      body: 'Hi',
+      creator: 'bojbrook',
+      timestamp: 1657753111683,
+      comments: Array(0),
+      id: 1657753111683,
+    },
+  ]);
   const [showCreatePost, setCreatePost] = useState(true);
 
   const createPostButtonHandler = () => {
