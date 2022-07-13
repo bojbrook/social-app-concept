@@ -50,7 +50,6 @@ const Post = (props) => {
       <Card.Header as="h5">{creator}</Card.Header>
       <Card.Body>
         <Card.Text>{body}</Card.Text>
-        {showCommentForm && commentForm()}
         {showComments &&
           comments.map((item) => {
             return <Comment key={id} text={item.body} />;
