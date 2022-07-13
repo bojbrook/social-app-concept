@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Button from 'react-bootstrap/Button';
+
 const CreatePost = (props) => {
   const onSubmitHandler = (e) => {
     e.preventDefault();
@@ -13,13 +15,14 @@ const CreatePost = (props) => {
       comments: [],
       id: Date.now(),
     };
+    console.log(postData);
     props.addPost(postData);
   };
   return (
     <>
       <form onSubmit={onSubmitHandler}>
         <textarea name="postMessage" />
-        <button>Submit</button>
+        <Button type="submit">Submit</Button>
       </form>
     </>
   );

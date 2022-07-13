@@ -1,8 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './Comment.module.css';
 
 const Comment = (props) => {
-  return <li>{props.text}</li>;
+  return (
+    <div className={styles.card}>
+      <h3 className={styles.cardComment}>{props.text}</h3>
+    </div>
+  );
 };
 
 Comment.propTypes = {

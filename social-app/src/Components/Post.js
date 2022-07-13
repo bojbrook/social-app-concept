@@ -38,7 +38,9 @@ const Post = (props) => {
     return (
       <form onSubmit={onSubmitCommentHandler}>
         <input name="commentInput" />
-        <button>Post</button>
+        <Button variant="primary" type="submit">
+          Post
+        </Button>
       </form>
     );
   };
@@ -48,13 +50,25 @@ const Post = (props) => {
       <Card.Header as="h5">{creator}</Card.Header>
       <Card.Body>
         <Card.Text>{body}</Card.Text>
-        {showCommentForm && commentForm()}
         {showComments &&
           comments.map((item) => {
             return <Comment key={id} text={item.body} />;
           })}
-        <Button onClick={showCommentsHandler}>View Comments</Button>
-        <Button onClick={createCommentHandler}>Comment</Button>
+        <Button
+          variant="dark"
+          style={{ margin: '5px' }}
+          onClick={showCommentsHandler}
+        >
+          View Comments
+        </Button>
+        <Button
+          variant="dark"
+          style={{ margin: '5px' }}
+          onClick={createCommentHandler}
+        >
+          Comment
+        </Button>
+        {showCommentForm && commentForm()}
       </Card.Body>
     </Card>
   );

@@ -2,6 +2,7 @@ import './App.css';
 import CreatePost from './Components/CreatePost';
 import Post from './Components/Post';
 import React, { useState } from 'react';
+import { Button } from 'react-bootstrap';
 
 function App() {
   const [posts, setPost] = useState([]);
@@ -23,7 +24,7 @@ function App() {
     <div className="App">
       <h1>Posts</h1>
       {showCreatePost && <CreatePost addPost={addPost} />}
-      <button onClick={createPostButtonHandler}>Create Post</button>
+      <Button onClick={createPostButtonHandler}>Create Post</Button>
       {postsArr}
     </div>
   );
