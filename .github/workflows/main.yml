@@ -7,10 +7,12 @@ jobs:
   test:
     name: Check the source code
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./social-app
     steps:
       - uses: actions/checkout@v2
       - name: Install packages
-        working-directory: ./social-app
         run: npm ci
       - name: Prettier
         run: npm run format
