@@ -1,3 +1,6 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import Button from 'react-bootstrap/Button';
 
 const CreatePost = (props) => {
@@ -23,6 +26,10 @@ const CreatePost = (props) => {
       </form>
     </>
   );
+};
+
+CreatePost.propTypes = {
+  addPost: PropTypes.func.isRequired,
 };
 
 export default CreatePost;
