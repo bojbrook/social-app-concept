@@ -1,3 +1,6 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+
 const CreatePost = (props) => {
   const onSubmitHandler = (e) => {
     e.preventDefault();
@@ -20,6 +23,10 @@ const CreatePost = (props) => {
       </form>
     </>
   );
+};
+
+CreatePost.propTypes = {
+  addPost: PropTypes.func.isRequired,
 };
 
 export default CreatePost;

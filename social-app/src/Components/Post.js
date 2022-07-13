@@ -1,9 +1,13 @@
+import React, { useState } from 'react';
 import { Button, Card } from 'react-bootstrap';
-import { useState } from 'react';
 import Comment from './Comment';
+import PropTypes from 'prop-types';
+
 const Post = (props) => {
   const [showCommentForm, setShowCommentForm] = useState(false);
   const [showComments, setShowComments] = useState(false);
+
+  const { comments, creator, body, id } = props.data;
 
   const createCommentHandler = () => {
     setShowCommentForm(!showCommentForm);
@@ -20,10 +24,10 @@ const Post = (props) => {
       timestamp: Date.now(),
       id: Date.now(),
       isComment: true,
-      rootComment: props.data.id,
+      rootComment: id,
     };
 
-    props.data.comments.push(commentObj);
+    comments.push(commentObj);
   };
 
   const showCommentsHandler = () => {
@@ -41,19 +45,28 @@ const Post = (props) => {
 
   return (
     <Card bg="secondary" style={{ width: '18rem' }}>
-      <Card.Header as="h5">{props.data.creator}</Card.Header>
+      <Card.Header as="h5">{creator}</Card.Header>
       <Card.Body>
-        <Card.Text>{props.data.body}</Card.Text>
+        <Card.Text>{body}</Card.Text>
         {showCommentForm && commentForm()}
         {showComments &&
-          props.data.comments.map((item) => {
-            return <Comment text={item.body} />;
+          comments.map((item) => {
+            return <Comment key={id} text={item.body} />;
           })}
         <Button onClick={showCommentsHandler}>View Comments</Button>
         <Button onClick={createCommentHandler}>Comment</Button>
       </Card.Body>
     </Card>
   );
+};
+
+Post.propTypes = {
+  data: PropTypes.shape({
+    comments: PropTypes.array,
+    creator: PropTypes.string,
+    body: PropTypes.string,
+    id: PropTypes.number,
+  }),
 };
 
 export default Post;
