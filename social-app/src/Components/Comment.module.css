@@ -1,0 +1,15 @@
+.card {
+    background-color: gray;
+    border-radius: 15px;
+    margin: 10px;
+}
+
+.cardUser{
+    text-align: right;
+    margin-right: 10px;
+}
+
+.cardComment {
+    text-align: left;
+    margin: 10px;
+}

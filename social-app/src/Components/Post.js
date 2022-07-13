@@ -1,6 +1,9 @@
-import { Button, Card } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+
 import { useState } from 'react';
 import Comment from './Comment';
+
 const Post = (props) => {
   const [showCommentForm, setShowCommentForm] = useState(false);
   const [showComments, setShowComments] = useState(false);
@@ -16,7 +19,7 @@ const Post = (props) => {
 
     const commentObj = {
       body: newComment,
-      creator: 'bojbrook',
+      user: 'bojbrook',
       timestamp: Date.now(),
       id: Date.now(),
       isComment: true,
@@ -34,23 +37,37 @@ const Post = (props) => {
     return (
       <form onSubmit={onSubmitCommentHandler}>
         <input name="commentInput" />
-        <button>Post</button>
+        <Button variant="primary" type="submit">
+          Post
+        </Button>
       </form>
     );
   };
 
   return (
-    <Card bg="secondary" style={{ width: '18rem' }}>
+    <Card bg="secondary" style={{ margin: '15px', width: '20%' }}>
       <Card.Header as="h5">{props.data.creator}</Card.Header>
       <Card.Body>
         <Card.Text>{props.data.body}</Card.Text>
-        {showCommentForm && commentForm()}
         {showComments &&
           props.data.comments.map((item) => {
-            return <Comment text={item.body} />;
+            return <Comment comment={item} />;
           })}
-        <Button onClick={showCommentsHandler}>View Comments</Button>
-        <Button onClick={createCommentHandler}>Comment</Button>
+        <Button
+          variant="dark"
+          style={{ margin: '5px' }}
+          onClick={showCommentsHandler}
+        >
+          View Comments
+        </Button>
+        <Button
+          variant="dark"
+          style={{ margin: '5px' }}
+          onClick={createCommentHandler}
+        >
+          Comment
+        </Button>
+        {showCommentForm && commentForm()}
       </Card.Body>
     </Card>
   );

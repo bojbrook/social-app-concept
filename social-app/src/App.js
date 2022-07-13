@@ -2,9 +2,18 @@ import './App.css';
 import CreatePost from './Components/CreatePost';
 import Post from './Components/Post';
 import { useState } from 'react';
+import Button from 'react-bootstrap/Button';
 
 function App() {
-  const [posts, setPost] = useState([]);
+  const [posts, setPost] = useState([
+    {
+      body: 'Hello',
+      comments: [],
+      creator: 'bojbrook',
+      id: 1657501731271,
+      timestamp: 165750173127,
+    },
+  ]);
   const [showCreatePost, setCreatePost] = useState(true);
 
   const createPostButtonHandler = () => {
@@ -29,9 +38,9 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Posts</h1>
+      <h1 className="Title">Posts</h1>
       {showCreatePost && <CreatePost addPost={addPost} />}
-      <button onClick={createPostButtonHandler}>Create Post</button>
+      <Button onClick={createPostButtonHandler}>Create Post</Button>
       {postsArr}
     </div>
   );
