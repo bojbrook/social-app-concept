@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 
 function App() {
-  const [posts, setPost] = useState([
+  const [posts, setPosts] = useState([
     {
       body: 'Hi',
       creator: 'bojbrook',
@@ -23,10 +23,23 @@ function App() {
   const addPost = (post) => {
     //Adds function for adding comment to post object
     post = { ...post };
-    setPost((arr) => [...arr, post]);
+    setPosts((arr) => [...arr, post]);
   };
 
-  const postsArr = posts.map((item) => <Post key={item.id} data={item} />);
+  const deletePost = (id) => {
+    if (posts.length === 1) {
+      setPosts([]);
+      return;
+    }
+    const tempArr = posts;
+    const indexForRemoval = tempArr.findIndex((item) => item.id === id);
+    tempArr.splice(indexForRemoval, 1);
+    setPosts(tempArr);
+  };
+
+  const postsArr = posts.map((item) => (
+    <Post deletePost={deletePost} key={item.id} data={item} />
+  ));
 
   return (
     <div className="App">
