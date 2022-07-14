@@ -13,6 +13,11 @@ const Post = (props) => {
     setShowCommentForm(!showCommentForm);
   };
 
+  const onDeletePostHandler = () => {
+    console.log(`Deleting Post id:${id}`);
+    props.deletePost(id);
+  };
+
   const onSubmitCommentHandler = (e) => {
     e.preventDefault();
     const newComment = e.target.commentInput.value;
@@ -47,7 +52,12 @@ const Post = (props) => {
 
   return (
     <Card bg="secondary" style={{ width: '18rem' }}>
-      <Card.Header as="h5">{creator}</Card.Header>
+      <Card.Header as="h5">
+        {creator}{' '}
+        <Button variant="danger" size="sm" onClick={onDeletePostHandler}>
+          Delete
+        </Button>
+      </Card.Header>
       <Card.Body>
         <Card.Text>{body}</Card.Text>
         {showComments &&
@@ -81,6 +91,7 @@ Post.propTypes = {
     body: PropTypes.string,
     id: PropTypes.number,
   }),
+  deletePost: PropTypes.func,
 };
 
 export default Post;
